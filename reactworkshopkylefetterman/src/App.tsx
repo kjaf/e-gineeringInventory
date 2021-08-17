@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import {getFoods} from './api/foodsApi'
 
 
 
@@ -9,26 +10,31 @@ type Food = {
     type: string
 }
 
-const foods:Food[] = [
-    {
-        name: "Carrot", 
-        quantity:1,
-        reOrderPoint:1, 
-        type:"Vegetable"
-    },
-    {
-        name:"Potato",
-        quantity:2,
-        reOrderPoint:1, 
-        type:"Vegetable"
-    }
-]
+const foods:Food[] = []
+
 
 
 
 
 
 const App = () => {
+
+    const [foods, setFoods] = useState<Food[]>([]);
+
+    useEffect(()=>{
+        async function callGetFoods(){
+            const resp = await getFoods();
+            if(!resp.ok) throw new Error("Call to get foods failed")
+            const json = await resp.json();
+            setFoods(json);
+        }
+        callGetFoods();
+    },[])
+
+    const deleteFood = () =>{
+        alert("yo bro");
+    }
+    
     const renderFoods = () =>{
         return (
             <tbody>
@@ -36,6 +42,9 @@ const App = () => {
                 return(
                  
                         <tr key={food.name}>
+                            <td>
+                                <button onClick={deleteFood}>Delete</button>
+                            </td>
                             <td>
                                 {food.name} 
                             </td>
@@ -62,6 +71,7 @@ const App = () => {
             <table>
                 <thead>
                     <tr>
+                        <th>Delete</th>
                         <th>Food Name</th>
                         <th>Quantity</th>
                         <th>Reorder Point</th>
