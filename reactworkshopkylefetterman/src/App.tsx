@@ -4,17 +4,23 @@ import React from 'react'
 
 type Food = {
     name: string, 
-    quantity: number; 
+    quantity: number, 
+    reOrderPoint: number, 
+    type: string
 }
 
 const foods:Food[] = [
     {
         name: "Carrot", 
-        quantity:1
+        quantity:1,
+        reOrderPoint:1, 
+        type:"Vegetable"
     },
     {
         name:"Potato",
-        quantity:2
+        quantity:2,
+        reOrderPoint:1, 
+        type:"Vegetable"
     }
 ]
 
@@ -25,22 +31,45 @@ const foods:Food[] = [
 const App = () => {
     const renderFoods = () =>{
         return (
-            foods.map(food=>{
+            <tbody>
+            {foods.map((food,index)=>{
                 return(
-                   <li>
-                       {food.name}
-                   </li>
-                )
-            })
+                 
+                        <tr key={food.name}>
+                            <td>
+                                {food.name} 
+                            </td>
+                            <td>
+                                {food.quantity}
+                            </td>
+                            <td>
+                                {food.reOrderPoint}
+                            </td>
+                            <td>
+                                {food.type}
+                            </td>
+                        </tr>
+                )}
+            )}
+            </tbody>
         )
     }
     
     
     return (
         <>
-            <ul>
+            <h1>Pantry Manager</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Food Name</th>
+                        <th>Quantity</th>
+                        <th>Reorder Point</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
                 {renderFoods()}
-            </ul>
+            </table>
         </>
     )
 }

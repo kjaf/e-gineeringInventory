@@ -9,7 +9,7 @@ import App from './App'
 //class                                     className
 //for                                       htmlFor
 //inline styles are strings                 inline styles are objects, Numbers=px
-
+//<!-- comments like this -->                {/* comments like this  */}
 render(<App />,document.getElementById("root"))
 
 
