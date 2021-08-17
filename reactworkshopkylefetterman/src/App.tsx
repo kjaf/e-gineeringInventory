@@ -32,7 +32,7 @@ const App = () => {
     const renderFoods = () =>{
         return (
             <tbody>
-            {foods.map((food,index)=>{
+            {foods.map((food)=>{
                 return(
                  
                         <tr key={food.name}>
