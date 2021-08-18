@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import {getFoods, deleteFood} from './api/foodsApi'
+import {getFoods, deleteFood, addFood} from './api/foodsApi'
 import Input from './shared/Input';
 import Select from './shared/Select'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -89,15 +91,31 @@ const App = () => {
         )
     }
     
-    
+    const handleSubmit = (event:React.FormEvent<HTMLFormElement>) =>{
+      // event.preventDefault();
+        try{
+            const moreFoods = addFood(newFood)
+           //  setFoods([...foods,newFood])
+            setNewFood(emptyFood)
+            toast.success("Food Saved! ")
+        }catch(error){
+            alert("error")
+            
+        }
+    }
+       
     return (
         <>
+            <ToastContainer />
             <h1>Pantry Manager</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <Input  onChange={onChange} value={newFood.name} id="name" label="Name" />
                 <Input type="number" onChange={onChange}  value={newFood.quantity.toString()} id="quantity" label="quantity" />
                 <Input type="number" onChange={onChange} value={newFood.reOrderPoint.toString()} id="reOrderPoint" label="reorder point" />
                 <Select  onChange={onChange} value={newFood.type} id="type" label="type" options={[{label:"vegetable", value:"vegetable"},{label:"Grain", value:"Grain"},{label:"Fruit",value:"Fruit"}]} />
+                <br />
+                <br />
+                <button className="btn btn-primary" type="submit" value="Save Food">Save Food</button>
             </form>
             <table>
                 <thead>

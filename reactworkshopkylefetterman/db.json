@@ -13,6 +13,27 @@
       "quantity": 2,
       "reOrderPoint": 1,
       "type": "Vegetable"
+    },
+    {
+      "name": "adsf",
+      "quantity": "1",
+      "reOrderPoint": "1",
+      "type": "vegetable",
+      "id": 3
+    },
+    {
+      "name": "adsf",
+      "quantity": "1",
+      "reOrderPoint": "1",
+      "type": "vegetable",
+      "id": 4
+    },
+    {
+      "name": "asdf",
+      "quantity": "2",
+      "reOrderPoint": "1",
+      "type": "vegetable",
+      "id": 5
     }
   ]
 }

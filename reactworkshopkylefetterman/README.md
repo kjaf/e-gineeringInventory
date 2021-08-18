@@ -20,6 +20,8 @@ mock service worker
 mirage
 
 
+react-toastify
+
 
 filter map
 
