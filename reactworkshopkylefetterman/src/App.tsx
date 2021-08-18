@@ -44,7 +44,7 @@ const App = () => {
     
     //Implementing single onCHange handler by convention
     // id coorellates to the property in state
-    const onChange = (event:React.ChangeEvent<HTMLInputElement>) =>{
+    const onChange = (event:React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>{
         const _newFood = {...newFood, [event.target.id]:event.target.value}
         setNewFood(_newFood)
     }
@@ -94,10 +94,10 @@ const App = () => {
         <>
             <h1>Pantry Manager</h1>
             <form>
-                <Input onChange={onChange} value={newFood.name} id="name" label="Name" />
-                <Input onChange={onChange}  value={newFood.quantity.toString()} id="quantity" label="quantity" />
-                <Input onChange={onChange} value={newFood.reOrderPoint.toString()} id="reOrderPoint" label="reorder point" />
-                <Select  value={newFood.type} id="type" label="type" options={[{label:"vegetable", value:"vegetable"},{label:"Grain", value:"Grain"},{label:"Fruit",value:"Fruit"}]} />
+                <Input  onChange={onChange} value={newFood.name} id="name" label="Name" />
+                <Input type="number" onChange={onChange}  value={newFood.quantity.toString()} id="quantity" label="quantity" />
+                <Input type="number" onChange={onChange} value={newFood.reOrderPoint.toString()} id="reOrderPoint" label="reorder point" />
+                <Select  onChange={onChange} value={newFood.type} id="type" label="type" options={[{label:"vegetable", value:"vegetable"},{label:"Grain", value:"Grain"},{label:"Fruit",value:"Fruit"}]} />
             </form>
             <table>
                 <thead>

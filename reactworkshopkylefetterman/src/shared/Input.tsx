@@ -5,17 +5,17 @@ import React, { ChangeEvent, ChangeEventHandler } from "react";
   id: string;
   value:string;
   onChange: React.ChangeEventHandler<Element>;
-  type: "text" | "number" | "email" | "phone" | "date";
+  type?: "text" | "number" | "email" | "phone" | "date";
 };
 
-const Input = (props: InputProps) => {
+const Input = ({label, id, value, onChange, type="text"}:InputProps) => {
   return (
     <>
       
         <div>
-          <label htmlFor={props.id}>{props.label}</label>
+          <label htmlFor={id}>{label}</label>
           <br />
-          <input onChange={props.onChange} type={props.type} id={props.id} value={props.value}></input>
+          <input onChange={onChange} type={type} id={id} value={value}></input>
         </div>
 
     </>
