@@ -11,6 +11,7 @@ type SelectProps ={
     id:string; 
     label:string; 
     options:SelectOption[]
+    value:string;
 }
 
 const Input = (props:SelectProps) => {
@@ -22,7 +23,7 @@ const Input = (props:SelectProps) => {
                     <select>
                     {props.options.map(option=>{
                         return(
-                            <option key={option.value} value={option.value}>{option.label}</option>
+                            <option selected={props.value==option.value} key={option.value} value={option.value}>{option.label}</option>
                         )
                     })}
                         

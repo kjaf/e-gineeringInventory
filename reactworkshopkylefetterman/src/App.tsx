@@ -13,19 +13,42 @@ export type Food = {
     type: string
 }
 
+export type newFood ={
+    name: string, 
+    quantity: number, 
+    reOrderPoint: number, 
+    type: string
+}
+
+
 const foods:Food[] = []
 
-
+const emptyFood: newFood = {
+    name: "",
+    quantity: 0, 
+    reOrderPoint:0, 
+    type:""
+}
 
 
 const App = () => {
 
     const [foods, setFoods] = useState<Food[]>([]);
+    const [newFood, setNewFood] = useState<newFood>(emptyFood);
    
 
     useEffect(()=>{
         callGetFoods();
     },[])
+
+    
+    //Implementing single onCHange handler by convention
+    // id coorellates to the property in state
+    const onChange = (event:React.ChangeEvent<HTMLInputElement>) =>{
+        const _newFood = {...newFood, [event.target.id]:event.target.value}
+        setNewFood(_newFood)
+    }
+
 
     async function callGetFoods(){
         const data = await getFoods();
@@ -70,10 +93,12 @@ const App = () => {
     return (
         <>
             <h1>Pantry Manager</h1>
-            <Input id="name" label="Name" />
-            <Input id="quantity" label="quantity" />
-            <Input id="min-quantity" label="min-quantity" />
-            <Select id="type" label="type" options={[{label:"vegetable", value:"vegetable"},{label:"Grain", value:"Grain"},{label:"Fruit",value:"Fruit"}]} />
+            <form>
+                <Input onChange={onChange} value={newFood.name} id="name" label="Name" />
+                <Input onChange={onChange}  value={newFood.quantity.toString()} id="quantity" label="quantity" />
+                <Input onChange={onChange} value={newFood.reOrderPoint.toString()} id="reOrderPoint" label="reorder point" />
+                <Select  value={newFood.type} id="type" label="type" options={[{label:"vegetable", value:"vegetable"},{label:"Grain", value:"Grain"},{label:"Fruit",value:"Fruit"}]} />
+            </form>
             <table>
                 <thead>
                     <tr>
