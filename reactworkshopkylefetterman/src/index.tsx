@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Route} from 'react-router-dom'
 import About from './About';
 import  Nav  from './Nav';
+import AddFoodForm from './AddFoodForm';
 
 //our first react component 
 
@@ -20,6 +21,7 @@ render(
 <Nav />
     <Route path="/about"><About /></Route> 
     <Route path="/" exact><App /></Route> 
+    <Route path="/addFood"><AddFoodForm /></Route>
 </BrowserRouter>
 
 ,document.getElementById("root"))

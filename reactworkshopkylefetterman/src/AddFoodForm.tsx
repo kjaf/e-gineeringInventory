@@ -4,6 +4,7 @@ import Input from './shared/Input';
 import Select from './shared/Select'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {useHistory} from 'react-router-dom'
 
 
 
@@ -15,13 +16,29 @@ export type Food = {
     type: string
 }
 
+export type newFood ={
+    name: string, 
+    quantity: number, 
+    reOrderPoint: number, 
+    type: string
+}
 
 
+const foods:Food[] = []
 
-const App = () => {
+const emptyFood: newFood = {
+    name: "",
+    quantity: 0, 
+    reOrderPoint:0, 
+    type:""
+}
+
+
+const AddFoodForm = () => {
 
     const [foods, setFoods] = useState<Food[]>([]);
-
+    const [newFood, setNewFood] = useState<newFood>(emptyFood);
+    const history = useHistory();
    
 
     useEffect(()=>{
@@ -29,6 +46,13 @@ const App = () => {
     },[])
 
     
+    //Implementing single onCHange handler by convention
+    // id coorellates to the property in state
+    const onChange = (event:React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>{
+        const _newFood = {...newFood, [event.target.id]:event.target.value}
+        setNewFood(_newFood)
+    }
+
 
     async function callGetFoods(){
         const data = await getFoods();
@@ -69,25 +93,33 @@ const App = () => {
         )
     }
     
+    const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) =>{
+      event.preventDefault();
+        try{
+            await addFood(newFood)
+         toast.success("Food Saved! ")
+            history.push("/")
+        }catch(error){
+            alert("error")
+            
+        }
+    }
        
     return (
         <>
             <ToastContainer />
             <h1>Pantry Manager</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Delete</th>
-                        <th>Food Name</th>
-                        <th>Quantity</th>
-                        <th>Reorder Point</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                {renderFoods()}
-            </table>
+            <form onSubmit={handleSubmit}>
+                <Input  onChange={onChange} value={newFood.name} id="name" label="Name" />
+                <Input type="number" onChange={onChange}  value={newFood.quantity.toString()} id="quantity" label="quantity" />
+                <Input type="number" onChange={onChange} value={newFood.reOrderPoint.toString()} id="reOrderPoint" label="reorder point" />
+                <Select  onChange={onChange} value={newFood.type} id="type" label="type" options={[{label:"vegetable", value:"vegetable"},{label:"Grain", value:"Grain"},{label:"Fruit",value:"Fruit"}]} />
+                <br />
+                <br />
+                <button className="btn btn-primary" type="submit" value="Save Food">Save Food</button>
+            </form>
         </>
     )
 }
 
-export default App
+export default AddFoodForm

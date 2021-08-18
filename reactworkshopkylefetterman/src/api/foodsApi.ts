@@ -1,5 +1,6 @@
 
-import {Food,newFood} from "../App"
+import {Food} from "../App"
+import {newFood} from '../AddFoodForm'
 
 export async function getFoods(){
     const response = await fetch("http://localhost:3001/foods");
@@ -21,7 +22,7 @@ export async function addFood(newFood:newFood){
     const response = await fetch("http://localhost:3001/foods",{
         method:"POST",
         body:JSON.stringify(newFood),
-    headers:{'Content-type': 'application/json; charset=UTF-8'}
+        headers:{'Content-type': 'application/json; charset=UTF-8'}
 })
 
     if(!response.ok) throw new Error("Creation Failed")
