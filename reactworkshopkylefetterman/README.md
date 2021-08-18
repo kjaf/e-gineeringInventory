@@ -1,46 +1,66 @@
-# Getting Started with Create React App
+patch-package
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+jsx is not required, and 3 arguements of createElement
 
-## Available Scripts
+<>{children}</>
 
-In the project directory, you can run:
+named import can name what we are getting from the export
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+webpack, es lint
+jest-testing
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+debugger
 
-### `npm test`
+prettier
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+only use index when the array is static
 
-### `npm run build`
+mock service worker
+mirage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+filter map
 
-### `npm run eject`
+What is react?
+What is the benefit of doing client-side Development?
+What is JSX? How does it differ from HTML?
+What are props? What is its data type?
+What does JSX compile down to?
+What is create react app?
+What tools does create react app use behind the scenes and why?
+What command do you use to start the application?
+Where is the script you’re running declared?
+Are there alternatives to create react app? If so how would you find them and why would you consider them?
+What does the curly brace mean inside JSX?
+How do you handle public vs private in JavaScript modules?
+What folder does node install dependencies into?
+What language are those files written then? Can you view them?
+Where are our apps dependencies declared?
+What is the syntax for importing a component called Hello from the same directory?
+What is the name for that syntax?
+What if I want to import a specific portion of a file?
+When do we use a relative path in import?
+What if we omit the path in an import?
+What does that syntax look like?
+What is that style of import called?
+What JavaScript feature did we use with useState to create variables from elements in an array?
+What tool are we using to format our code?
+What is a key? When an why is it useful? What value should we set it to?
+What is a pure function? Why is it useful?
+What is the useEffect hook? Why is it useful?
+What does the 2nd param to useEffect do?
+What is useState hook? Why is it useful?
+How do you declare a default with the useState hook?
+What package are we using to mock APIs?
+What native browser feature are we using to make an HTTP request?
+What is the impact of adding the async keyword to a function?
+What is a key? Why is it useful? What’s a good one? A bad one?
+What array method did we use to iterate over an array and display data for each element?
+What array method did we use to create a new array with an element removed?
+Extra credit: Why should React’s state be treated as immutable?
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
