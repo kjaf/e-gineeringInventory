@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import {getFoods} from './api/foodsApi'
+import {getFoods, deleteFood} from './api/foodsApi'
+import Input from './shared/Input';
+import Select from './shared/Select'
 
 
 
-type Food = {
+export type Food = {
+    id:number,
     name: string, 
     quantity: number, 
     reOrderPoint: number, 
@@ -15,24 +18,18 @@ const foods:Food[] = []
 
 
 
-
-
 const App = () => {
 
     const [foods, setFoods] = useState<Food[]>([]);
+   
 
     useEffect(()=>{
-        async function callGetFoods(){
-            const resp = await getFoods();
-            if(!resp.ok) throw new Error("Call to get foods failed")
-            const json = await resp.json();
-            setFoods(json);
-        }
         callGetFoods();
     },[])
 
-    const deleteFood = () =>{
-        alert("yo bro");
+    async function callGetFoods(){
+        const data = await getFoods();
+        setFoods(data);
     }
     
     const renderFoods = () =>{
@@ -43,7 +40,12 @@ const App = () => {
                  
                         <tr key={food.name}>
                             <td>
-                                <button onClick={deleteFood}>Delete</button>
+                                <button onClick={async ()=>{
+                                    await deleteFood(food.id)
+                                    const newFoods=foods.filter(oldfood=>oldfood.id!==food.id)
+                                    setFoods(newFoods)
+                                    
+                                }}>Delete</button>
                             </td>
                             <td>
                                 {food.name} 
@@ -68,6 +70,10 @@ const App = () => {
     return (
         <>
             <h1>Pantry Manager</h1>
+            <Input id="name" label="Name" />
+            <Input id="quantity" label="quantity" />
+            <Input id="min-quantity" label="min-quantity" />
+            <Select id="type" label="type" options={[{label:"vegetable", value:"vegetable"},{label:"Grain", value:"Grain"},{label:"Fruit",value:"Fruit"}]} />
             <table>
                 <thead>
                     <tr>
