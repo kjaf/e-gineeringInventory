@@ -4,6 +4,7 @@ import Input from './shared/Input';
 import Select from './shared/Select'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {Link} from 'react-router-dom'
 
 
 
@@ -62,6 +63,9 @@ const App = () => {
                             <td>
                                 {food.type}
                             </td>
+                            <td>
+                            <Link to={`/food/${food.id}`}>Edit</Link>
+                            </td>
                         </tr>
                 )}
             )}
@@ -74,6 +78,7 @@ const App = () => {
         <>
             <ToastContainer />
             <h1>Pantry Manager</h1>
+            <h1>To Food: <Link to="/addFood" className="btn btn-primary"> Add Food</Link></h1>
             <table>
                 <thead>
                     <tr>

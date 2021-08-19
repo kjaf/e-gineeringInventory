@@ -16,7 +16,7 @@ type SelectProps ={
 }
 
 const Input = (props:SelectProps) => {
-
+   
     return (
             <>
                <label htmlFor={props.id}>{props.label}</label>

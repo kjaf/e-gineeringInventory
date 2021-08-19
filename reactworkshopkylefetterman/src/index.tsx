@@ -23,6 +23,7 @@ render(
     <Route path="/about"><About /></Route> 
     <Route path="/" exact><App /></Route> 
     <Route path="/addFood"><AddFoodForm /></Route>
+    <Route path="/food/:foodId" ><AddFoodForm /></Route>
 </BrowserRouter>
 
 ,document.getElementById("root"))
