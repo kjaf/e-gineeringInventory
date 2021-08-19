@@ -15,6 +15,7 @@ import AddFoodForm from './AddFoodForm';
 //for                                       htmlFor
 //inline styles are strings                 inline styles are objects, Numbers=px
 //<!-- comments like this -->                {/* comments like this  */}
+//options accept select                     select accepts value
 render(
   
 <BrowserRouter>
