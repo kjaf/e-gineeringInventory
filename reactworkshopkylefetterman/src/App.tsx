@@ -23,7 +23,7 @@ const App = () => {
 
     const [foods, setFoods] = useState<Food[]>([]);
 
-   
+
 
     useEffect(()=>{
         callGetFoods();
@@ -40,8 +40,10 @@ const App = () => {
         return (
             <tbody>
             {foods.map((food)=>{
+                // if(food.quantity < food.reOrderPoint){
+                //     const color:string ="red";
+                // }
                 return(
-                 
                         <tr key={food.name}>
                             <td>
                                 <button onClick={async ()=>{
@@ -54,7 +56,8 @@ const App = () => {
                             <td>
                                 {food.name} 
                             </td>
-                            <td>
+                            <td style={food.quantity < food.reOrderPoint ? { color:"red"} : {}}>
+
                                 {food.quantity}
                             </td>
                             <td>
@@ -79,6 +82,7 @@ const App = () => {
             <ToastContainer />
             <h1>Pantry Manager</h1>
             <h1>To Food: <Link to="/addFood" className="btn btn-primary"> Add Food</Link></h1>
+            {foods.length <= 0 ? <h1> No Foods</h1> :
             <table>
                 <thead>
                     <tr>
@@ -91,6 +95,7 @@ const App = () => {
                 </thead>
                 {renderFoods()}
             </table>
+        }
         </>
     )
 }

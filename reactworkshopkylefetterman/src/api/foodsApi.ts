@@ -39,3 +39,14 @@ export async function getFoodById(id:number){
     if (!response.ok) throw new Error("Call to get foods failed")
     return  response.json() as Promise<Food>;
 }
+
+export async function updateFoodById(updateFood:newFood, foodId:number){
+    const response = await fetch(baseUrl+"/foods/"+foodId,{
+        method:"PUT", 
+        body:JSON.stringify(updateFood), 
+        headers:{'Content-type': 'application/json; charset=UTF-8'}
+    })
+
+    if (!response.ok) throw new Error("Call to update foods failed")
+    return  response.json() as Promise<Food>;
+}

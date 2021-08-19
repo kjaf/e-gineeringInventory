@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {getFoods, getFoodById, addFood} from './api/foodsApi'
+import {getFoods, getFoodById, addFood,  updateFoodById} from './api/foodsApi'
 import Input from './shared/Input';
 import Select from './shared/Select'
 import { ToastContainer, toast } from 'react-toastify';
@@ -82,7 +82,11 @@ const AddFoodForm = () => {
     const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) =>{
       event.preventDefault();
         try{
-            await addFood(newFood)
+            if(foodId){
+                await updateFoodById(newFood, foodId);
+            }else{
+                await addFood(newFood)
+            }
              toast.success("Food Saved! ")
             history.push("/")
         }catch(error){
