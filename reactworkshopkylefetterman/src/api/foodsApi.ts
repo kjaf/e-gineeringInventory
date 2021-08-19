@@ -1,5 +1,5 @@
 
-import {Food} from "../App"
+import {Food} from "../Home"
 import {newFood} from '../AddFoodForm'
 
 

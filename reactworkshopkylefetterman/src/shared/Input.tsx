@@ -22,4 +22,9 @@ const Input = ({label, id, value, onChange, type="text"}:InputProps) => {
   );
 };
 
+
+//alternative default Props
+// Input.defaultProps{
+//   type:"number"
+// }
 export default Input;

@@ -25,6 +25,18 @@ http://html5doctor.com/downloads/h5d-sectioning-flowchart.pdf
 
 filter map
 
+
+spread operator 
+
+awesome react components
+
+React-query
+
+
+
+
+
+
 What is react?
 What is the benefit of doing client-side Development?
 What is JSX? How does it differ from HTML?

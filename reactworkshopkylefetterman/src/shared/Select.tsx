@@ -1,5 +1,5 @@
 import React from 'react'
-import Food from '../App'
+import Food from '../Home'
 
 
 type SelectOption = {
